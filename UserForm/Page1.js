@@ -10,8 +10,7 @@ function myFunction()
 {
     class User
     {
-        constructor(name,surname,sel,email,pwd)
-        {
+        constructor(name,surname,sel,email,pwd){
             this.name = name;
             this.sel = sel;
             this.email = email;
@@ -20,8 +19,7 @@ function myFunction()
     }
     class User2 extends User
     {
-        constructor(name,surname,sel,email,pwd,cho)
-        {
+        constructor(name,surname,sel,email,pwd,cho){
             super(name,surname,sel,email,pwd);
             this.cho = cho;
         }
@@ -32,65 +30,44 @@ function myFunction()
             var UI =  Arry1.length;
             var i;
 
-            for(i=0; i<UI; i++)
-            {
+            for(i=0; i<UI; i++){
                 Text +=  '<tr><td>' + Arry1[i] + '</td> <td>' + Arry2[i]+ '</td> <td>' + Arry3[i]+ '</td> <td>' + Arry4[i] + '</td> <td>' + Arry5[i] + '</td> <td>' + Arry6[i]+ '</td><td> <button type="button" class="btn btn-warning" onclick="Edit('+i+')">Edit</button> </td><td> <button type="button" class="btn btn-danger" onclick="Delete('+i+')">Delete</button> </td> </tr>';
             }
-
-                Text += "</thread>";
-            document.getElementById('UIO').innerHTML = Text;
-              
+            Text += "</thread>";
+            document.getElementById('UIO').innerHTML = Text;    
         }
     }
 
     var name = document.getElementById('name').value;
-
     var surname = document.getElementById('surname').value; 
-
-    var sel = document.getElementById('sel').value;
-        
+    var sel = document.getElementById('sel').value;      
     var cho;
-
-    if(document.getElementById('exampleRadios1').checked)
-    {
+    
+    if(document.getElementById('exampleRadios1').checked){
         cho = document.getElementById('exampleRadios1').value;
-    }
-    else if(document.getElementById('exampleRadios2').checked)
-    {
+    }else if(document.getElementById('exampleRadios2').checked){
         cho = document.getElementById('exampleRadios2').value;
-    }
-    else if(document.getElementById('exampleRadios3').checked)
-    {
+    }else if(document.getElementById('exampleRadios3').checked){
         cho = document.getElementById('exampleRadios3').value;
     }
     
     var email = document.getElementById('email').value;
     var pwd = document.getElementById('pwd').value;
     
-    if(name === '' || surname === '' || sel === '' || email === '' || pwd === '' || cho === '')
-    {
+    if(name === '' || surname === '' || sel === '' || email === '' || pwd === '' || cho === ''){
         alert('Some Property is undefined!');
-    }
-    else
-    {
-
+    }else{
         let P = email.search("@");
         
-        if(P>0)
-        {
+        if(P>0){
            var G = Arry5.some(checkAdult);
+           function checkAdult(a) {
+           return a == email;
+           }
 
-            function checkAdult(a) {
-            return a == email;
-                                }
-
-        
-        if( G == true && K == 0)
-        {
+        if( G == true && K == 0){
             alert('data is a Dublicate!');
-        }
-        else if(K == 1){
-        
+        }else if(K == 1){       
         var Text = "<thread> ";
         var UI =  Arry1.length;
         
@@ -103,71 +80,49 @@ function myFunction()
 
         var i;
 
-        for(i=0; i<UI; i++)
-        {
+        for(i=0; i<UI; i++) {
             Text +=  '<tr><td>' + Arry1[i] + '</td> <td>' + Arry2[i]+ '</td> <td>' + Arry3[i]+ '</td> <td>' + Arry4[i] + '</td> <td>' + Arry5[i] + '</td> <td>' + Arry6[i]+ '</td><td> <button type="button" class="btn btn-warning" onclick="Edit('+i+')">Edit</button> </td><td> <button type="button" class="btn btn-danger" onclick="Delete('+i+')">Delete</button> </td> </tr>';
         }
-
             Text += "</thread>";
             document.getElementById('UIO').innerHTML = Text;
-
-             document.getElementById('name').value = "";
+            document.getElementById('name').value = "";
             document.getElementById('surname').value = ""; 
             document.getElementById('email').value = "";
             document.getElementById('pwd').value = "";
             K = 0;
-        }
-        else{
+        }else{
             const myUser = new User2(name,surname,sel,email,pwd,cho);
             myUser.show();
-
             document.getElementById('name').value = "";
             document.getElementById('surname').value = ""; 
             document.getElementById('email').value = "";
             document.getElementById('pwd').value = "";
         }
-
-     }
-     else{
+     }else{
          alert("Your Email is wrong!");
      }
-
     }
-
-
     }
-
-
-
-
 
     function Edit(i)
     {
         K = 1;
-
         Y = i;
-        // Fvent.preventDefult();
+
         document.getElementById('name').value = Arry1[i];
         document.getElementById('surname').value = Arry2[i];
         document.getElementById('sel').value = Arry3[i];
 
-        if(Arry4[i]=="Male")
-        {
+        if(Arry4[i]=="Male"){
             document.getElementById('exampleRadios1').value = Arry4[i];
-        }
-        else  if(Arry4[i] == "Female")
-        {
+        }else  if(Arry4[i] == "Female"){
             document.getElementById('exampleRadios2').value = Arry4[i];
-        }
-        else
-        {
+        } else{
         document.getElementById('exampleRadios1').value = Arry4[i];
         }
         document.getElementById('email').value = Arry5[i];
         document.getElementById('pwd').value = Arry6[i];
    }
-
-
 
     function Delete(i)
     {
@@ -182,12 +137,11 @@ function myFunction()
         var UI =  Arry1.length;
         var i;
 
-        for(i=0; i<UI; i++)
-        {
+        for(i=0; i<UI; i++){
             Text +=  '<tr><td>' + Arry1[i] + '</td> <td>' + Arry2[i]+ '</td> <td>' + Arry3[i]+ '</td> <td>' + Arry4[i] + '</td> <td>' + Arry5[i] + '</td> <td>' + Arry6[i]+ '</td><td> <button type="button" class="btn btn-warning" onclick="Edit('+i+')">Edit</button> </td><td> <button type="button" class="btn btn-danger" onclick="Delete('+i+')">Delete</button> </td> </tr>';
         }
 
-            Text += "</thread>";
+        Text += "</thread>";
         document.getElementById('UIO').innerHTML = Text;
    }
 
